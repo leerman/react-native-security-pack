@@ -49,7 +49,7 @@ def supportsNamespace() {
 
 android {
   if (supportsNamespace()) {
-    namespace "com.securitypack"
+    namespace "com.leerman.rnsecuritypack"
 
     sourceSets {
       main {
@@ -121,6 +121,6 @@ if (isNewArchitectureEnabled()) {
   react {
     jsRootDir = file("../src/")
     libraryName = "SecurityPack"
-    codegenJavaPackageName = "com.securitypack"
+    codegenJavaPackageName = "com.leerman.rnsecuritypack"
   }
 }

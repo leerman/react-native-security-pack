@@ -1,4 +1,4 @@
-package com.securitypack
+package com.leerman.rnsecuritypack
 
 import com.facebook.react.TurboReactPackage
 import com.facebook.react.bridge.ReactApplicationContext

@@ -189,7 +189,7 @@
       "android": "android/generated"
     },
     "android": {
-      "javaPackageName": "com.securitypack"
+      "javaPackageName": "com.leerman.rnsecuritypack"
     },
     "includesGeneratedCode": true
   },

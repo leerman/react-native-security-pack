@@ -1,17 +1,22 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-security-pack';
+import { containsSignatures } from 'react-native-security-pack';
 
 export default function App() {
-  const [result, setResult] = useState<number | undefined>();
+  const [result, setResult] = useState<any>({});
 
   useEffect(() => {
-    multiply(3, 7).then(setResult);
+    containsSignatures(['5E8F16062EA3CD2C4A0D547876BAA6F38CABF625']).then((r) =>
+      setResult((value: any) => ({
+        ...value,
+        containsSignatures: r,
+      }))
+    );
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Result: {JSON.stringify(result)}</Text>
     </View>
   );
 }
