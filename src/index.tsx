@@ -34,7 +34,6 @@ export async function containsSignatures(sigs: string[]): Promise<boolean> {
   if (Platform.OS === 'ios') return true;
 
   const signatures: string[] = await getSignatures();
-  console.log({ signatures });
   const sigUpper = sigs.map((item) => item.toUpperCase());
   return signatures.some((item) => sigUpper.includes(item));
 }

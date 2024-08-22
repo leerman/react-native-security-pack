@@ -1,18 +1,16 @@
 #import "SecurityPack.h"
+#import <DTTJailbreakDetection/DTTJailbreakDetection.h>
 
 @implementation SecurityPack
 RCT_EXPORT_MODULE()
 
 // Example method
 // See // https://reactnative.dev/docs/native-modules-ios
-RCT_EXPORT_METHOD(multiply:(double)a
-                  b:(double)b
-                  resolve:(RCTPromiseResolveBlock)resolve
+RCT_EXPORT_METHOD(isRooted:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject)
 {
-    NSNumber *result = @(a * b);
-
-    resolve(result);
+    BOOL rooted = [DTTJailbreakDetection isJailbroken];
+    resolve(@(rooted));
 }
 
 // Don't compile this code when we build for the old architecture.
