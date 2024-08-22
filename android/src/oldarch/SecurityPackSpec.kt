@@ -8,4 +8,5 @@ abstract class SecurityPackSpec internal constructor(context: ReactApplicationCo
   ReactContextBaseJavaModule(context) {
 
  abstract fun getSignatures(promise: Promise)
+ abstract fun isRooted(promise: Promise)
 }

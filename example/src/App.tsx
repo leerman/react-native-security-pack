@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { containsSignatures } from 'react-native-security-pack';
+import { containsSignatures, isRooted } from 'react-native-security-pack';
 
 export default function App() {
   const [result, setResult] = useState<any>({});
@@ -10,6 +10,12 @@ export default function App() {
       setResult((value: any) => ({
         ...value,
         containsSignatures: r,
+      }))
+    );
+    isRooted().then((rooted) =>
+      setResult((value: any) => ({
+        ...value,
+        rooted,
       }))
     );
   }, []);

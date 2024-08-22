@@ -7,6 +7,7 @@ import com.facebook.react.bridge.Promise
 
 import android.os.Build
 import android.content.pm.PackageManager
+import com.kimchangyoun.rootbeerFresh.RootBeer
 
 import java.security.MessageDigest
 
@@ -21,10 +22,12 @@ class SecurityPackModule internal constructor(context: ReactApplicationContext) 
     const val NAME = "SecurityPack"
   }
 
-  private val mContext: ReactApplicationContext
+  private val mContext: ReactApplicationContext = context
 
-  init {
-    mContext = context
+  @ReactMethod
+  override fun isRooted(promise: Promise) {
+    val rootBeer = RootBeer(mContext)
+    promise.resolve(rootBeer.isRooted)
   }
 
   @ReactMethod

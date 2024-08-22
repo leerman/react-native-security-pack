@@ -38,3 +38,7 @@ export async function containsSignatures(sigs: string[]): Promise<boolean> {
   const sigUpper = sigs.map((item) => item.toUpperCase());
   return signatures.some((item) => sigUpper.includes(item));
 }
+
+export async function isRooted(): Promise<boolean> {
+  return SecurityPack.isRooted();
+}

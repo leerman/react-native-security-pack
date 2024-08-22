@@ -105,6 +105,7 @@ android {
 repositories {
   mavenCentral()
   google()
+  maven { url 'https://jitpack.io' }
 }
 
 def kotlin_version = getExtOrDefault("kotlinVersion")
@@ -115,6 +116,9 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+  implementation 'com.github.kimchangyoun:rootbeerFresh:0.0.10'
+  // implementation 'com.scottyab:rootbeer-lib:0.1.0'
 }
 
 if (isNewArchitectureEnabled()) {
