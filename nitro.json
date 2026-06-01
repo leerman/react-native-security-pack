@@ -1,0 +1,24 @@
+{
+  "$schema": "https://nitro.margelo.com/nitro.schema.json",
+  "cxxNamespace": ["rnsecuritypack"],
+  "ios": {
+    "iosModuleName": "RNSecurityPack"
+  },
+  "android": {
+    "androidNamespace": ["rnsecuritypack"],
+    "androidCxxLibName": "RNSecurityPack"
+  },
+  "autolinking": {
+    "SecurityPack": {
+      "android": {
+        "language": "kotlin",
+        "implementationClassName": "HybridSecurityPack"
+      },
+      "ios": {
+        "language": "swift",
+        "implementationClassName": "HybridSecurityPack"
+      }
+    }
+  },
+  "ignorePaths": ["**/node_modules"]
+}
