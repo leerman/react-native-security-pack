@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-security-pack": ["./src/index"]
+      "react-native-security-pack": ["./src/index.ts"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -10,6 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",
     "lib": ["ESNext"],
+    "types": ["jest"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "noEmit": true,

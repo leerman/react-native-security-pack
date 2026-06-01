@@ -1,11 +1,12 @@
 {
   "name": "react-native-security-pack",
-  "version": "1.0.2",
-  "description": "security",
-  "source": "./src/index.tsx",
+  "version": "2.0.0",
+  "description": "Root/jailbreak detection and APK signature verification for React Native (Nitro Modules, New Architecture)",
+  "source": "./src/index.ts",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
   "types": "./lib/typescript/module/src/index.d.ts",
+  "react-native": "src/index",
   "exports": {
     ".": {
       "import": {
@@ -21,22 +22,21 @@
   "files": [
     "src",
     "lib",
-    "android",
+    "jest",
+    "nitrogen",
+    "android/build.gradle",
+    "android/gradle.properties",
+    "android/fix-prefab.gradle",
+    "android/CMakeLists.txt",
+    "android/src",
     "ios",
-    "cpp",
+    "nitro.json",
+    "react-native.config.js",
     "*.podspec",
-    "!ios/build",
-    "!ios/generated",
     "!android/build",
-    "!android/gradle",
-    "!android/gradlew",
-    "!android/gradlew.bat",
-    "!android/local.properties",
-    "!android/generated",
     "!**/__tests__",
     "!**/__fixtures__",
-    "!**/__mocks__",
-    "!**/.*"
+    "!**/__mocks__"
   ],
   "scripts": {
     "example": "yarn workspace react-native-security-pack-example",
@@ -44,13 +44,18 @@
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
-    "prepare": "bob build",
+    "specs": "nitrogen",
+    "prepare": "yarn specs && bob build",
     "release": "release-it"
   },
   "keywords": [
     "react-native",
-    "ios",
-    "android"
+    "security",
+    "jailbreak",
+    "root",
+    "signature",
+    "nitro",
+    "new-architecture"
   ],
   "repository": {
     "type": "git",
@@ -68,30 +73,33 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^17.0.2",
     "@evilmartians/lefthook": "^1.5.0",
-    "@react-native/eslint-config": "^0.73.1",
+    "@react-native/eslint-config": "^0.76.0",
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/jest": "^29.5.5",
-    "@types/react": "^18.2.44",
+    "@types/react": "^18.3.0",
     "commitlint": "^17.0.2",
     "del-cli": "^5.1.0",
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "jest": "^29.7.0",
+    "nitrogen": "^0.35.9",
     "prettier": "^3.0.3",
     "react": "18.3.1",
-    "react-native": "0.75.2",
+    "react-native": "0.76.9",
     "react-native-builder-bob": "^0.30.0",
+    "react-native-nitro-modules": "^0.35.9",
     "release-it": "^15.0.0",
     "turbo": "^1.10.7",
     "typescript": "^5.2.2"
   },
   "resolutions": {
-    "@types/react": "^18.2.44"
+    "@types/react": "^18.3.0"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": ">=0.75.0",
+    "react-native-nitro-modules": ">=0.35.0"
   },
   "workspaces": [
     "example"
@@ -132,6 +140,9 @@
       "@react-native",
       "prettier"
     ],
+    "plugins": [
+      "prettier"
+    ],
     "rules": {
       "react/react-in-jsx-scope": "off",
       "prettier/prettier": [
@@ -148,7 +159,8 @@
   },
   "eslintIgnore": [
     "node_modules/",
-    "lib/"
+    "lib/",
+    "nitrogen/"
   ],
   "prettier": {
     "quoteProps": "consistent",
@@ -161,7 +173,6 @@
     "source": "src",
     "output": "lib",
     "targets": [
-      "codegen",
       [
         "commonjs",
         {
@@ -182,23 +193,5 @@
         }
       ]
     ]
-  },
-  "codegenConfig": {
-    "name": "RNSecurityPackSpec",
-    "type": "all",
-    "jsSrcsDir": "src",
-    "outputDir": {
-      "ios": "ios/generated",
-      "android": "android/generated"
-    },
-    "android": {
-      "javaPackageName": "com.leerman.rnsecuritypack"
-    },
-    "includesGeneratedCode": true
-  },
-  "create-react-native-library": {
-    "type": "module-mixed",
-    "languages": "kotlin-objc",
-    "version": "0.41.0"
   }
 }
