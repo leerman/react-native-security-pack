@@ -183,6 +183,10 @@ jest.mocked(isRooted).mockResolvedValueOnce(true);
 jest.mocked(containsSignatures).mockResolvedValueOnce(false);
 ```
 
+## Устранение неполадок
+
+Частые проблемы и их решения собраны в [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
+
 ## Ограничения
 
 Проверки root/jailbreak и подписи APK — **эвристики**. Опытный атакующий может их обойти. Используйте как один слой защиты вместе с серверной валидацией, certificate pinning, Play Integrity / App Attest и т.д.
