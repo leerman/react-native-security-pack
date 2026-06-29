@@ -1,6 +1,6 @@
 {
   "name": "react-native-security-pack",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Root/jailbreak detection and APK signature verification for React Native (Nitro Modules, New Architecture)",
   "source": "./src/index.ts",
   "main": "./lib/commonjs/index.js",
